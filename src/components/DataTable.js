@@ -11,6 +11,7 @@ function DataTable() {
         <td key={file.id}>{file.id}</td>
         <td key={file.assignees}>{file.assignees}</td>
         <td key={file.fileName}>{file.fileName}</td>
+        <td key={file.file.size}>{file.file.size}</td>
       </tr>
     );
   });
@@ -28,9 +29,10 @@ function DataTable() {
       <table>
         <thead>
           <tr>
-            <th key="id">id</th>
-            <th key="assignee">Assignee</th>
-            <th key="filename">File Name</th>
+            <th>id</th>
+            <th>Assignee</th>
+            <th>File Name</th>
+            <th>File Size</th>
           </tr>
         </thead>
         <tbody>{tableRows}</tbody>
