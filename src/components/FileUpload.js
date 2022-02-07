@@ -16,12 +16,11 @@ function FileUpload(props) {
   )
 
 // handle text input change for Assignee - DOESN'T WORK
-  function handleTagChange (event) {
-    const {name, value} = event.target
+  function handleTagChange (tags) {
     setForm(prevState => {
       return {
             ...prevState,
-            [name]: value,
+            tags,
       }
     }
     )}
