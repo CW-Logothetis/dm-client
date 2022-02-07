@@ -1,7 +1,7 @@
 import Dropzone from 'react-dropzone-uploader'
 import 'react-dropzone-uploader/dist/styles.css'
 
-const StandardDropzone = (props) => {
+const StandardDropzone = () => {
   
   
     const handleChangeStatus = ({ meta }, status) => {
