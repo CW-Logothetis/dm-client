@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import AssigneeTags from './Assignee';
+
   
 function FileUpload(props) {
 
@@ -84,16 +86,17 @@ function FileUpload(props) {
   return (
     <div>
       <form onSubmit={transferFileData}>
-        <label>Assignee</label>
-        <input type="text" name="assignees" value={form.assignees} onChange={handleChange} />
+        {/* <label>Assignee</label>
+        <input type="text" name="assignees" value={form.assignees} onChange={handleChange} /> */}
+        <AssigneeTags tag={form.assignees} onChange={handleChange} />
 
       
-        <input name="file" type="file" onChange={handleFileChange} />
+        <input name="file" type="file" onChange={handleFileChange} multiple/>
          
        
 
         <label>File Name</label>
-        <input type="text" name="fileName" value={form.fileName} onChange={handleChange} multiple/>
+        <input type="text" name="fileName" value={form.fileName} onChange={handleChange}/>
         <button>Click Me</button>
         
 
