@@ -9,7 +9,7 @@ function DataTable() {
     return (
       <tr>
         <td key={file.id}>{file.id}</td>
-        <td key={file.assignees}>{file.assignees}</td>
+        <td key={file.tags}>{file.tags}</td>
         <td key={file.fileName}>{file.fileName}</td>
         <td key={file.file.size}>{file.file.size}</td>
       </tr>

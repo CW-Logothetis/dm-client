@@ -1,7 +1,7 @@
 [ 
     {
     "id":1,
-    "assignees":"Chris",
+    "tags":"Chris",
     "fileName":"ticket.pdf",
     "file":"manchester"
     } 

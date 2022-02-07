@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
 
-import AssigneeTags from './Assignee';
+// import AssigneeTags from './Assignee';
 
-  
+import TagsInput from 'react-tagsinput'
+import 'react-tagsinput/react-tagsinput.css'
+
 function FileUpload(props) {
 
   const [form, setForm] = useState(
     {
-      assignees: "",
+      tags: [],
       fileName: "",
       file: null
     }
   )
 
+// handle text input change for Assignee - DOESN'T WORK
+  function handleTagChange (event) {
+    const {name, value} = event.target
+    setForm(prevState => {
+      return {
+            ...prevState,
+            [name]: value,
+      }
+    }
+    )}
 
-
+  // handle text input change for fileName
   function handleChange (event) {
     event.preventDefault()
     const {name, value} = event.target
@@ -26,7 +38,7 @@ function FileUpload(props) {
             })
         }
 
-    // Set up the handler
+    // handle adding a file
     function handleFileChange (event) {
       event.preventDefault()
       const {name, files, type} = event.target
@@ -36,15 +48,21 @@ function FileUpload(props) {
       }));
     };
   
+   // send to the DataTable 
   const transferFileData = (event) => {
     event.preventDefault();
-    // const val = form
 
     const formData = new FormData();
-    formData.append( "assignees", form.assignees );
+    let arr = form.tags
+    
+    arr.forEach((item) => formData.append("array[]", item))
+    console.log(formData.getAll("array[]"))
+
+    formData.append( "tags", form.tags );
     formData.append( "fileName", form.fileName );
     formData.append( "file", form.file );
 
+    //transfer props to DataTable
     props.transfer(form);
     console.log(form)
     clearState()
@@ -52,12 +70,13 @@ function FileUpload(props) {
   
   const clearState = () => {
     setForm({
-      assignees: "",
+      tags: [],
       fileName: "",
       file: null
     });
   };
 
+  // fileData purely to see file name, date, type data is working
   const fileData = () => {
     
     if (form.file) {
@@ -85,21 +104,20 @@ function FileUpload(props) {
   
   return (
     <div>
+
       <form onSubmit={transferFileData}>
         {/* <label>Assignee</label>
         <input type="text" name="assignees" value={form.assignees} onChange={handleChange} /> */}
-        <AssigneeTags tag={form.assignees} onChange={handleChange} />
 
+        <TagsInput name="tags" value={form.tags} onChange={handleTagChange} />
       
         <input name="file" type="file" onChange={handleFileChange} multiple/>
-         
-       
 
         <label>File Name</label>
         <input type="text" name="fileName" value={form.fileName} onChange={handleChange}/>
+
         <button>Click Me</button>
         
-
       </form>
 
       {fileData()}
@@ -108,3 +126,28 @@ function FileUpload(props) {
 }
   
 export default FileUpload;
+
+// class App extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = { tags: [] };
+//   }
+
+//   handleChange = tags => {
+//     console.log(tags);
+//     this.setState({ tags });
+//   };
+
+//   render() {
+//     console.log(this.state);
+//     return (
+//             <TagsInput
+//               name="tags"
+//               value={values.tags}
+//               onChange={tags => {
+//                 console.log(tags);
+              
+//               }}
+//             />
+//     )}
+// }

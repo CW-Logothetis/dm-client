@@ -3,12 +3,9 @@ import 'react-dropzone-uploader/dist/styles.css'
 
 const StandardDropzone = () => {
   
-  
     const handleChangeStatus = ({ meta }, status) => {
       console.log(status, meta)
     }
-  
-  
   
     return (
       <form>
