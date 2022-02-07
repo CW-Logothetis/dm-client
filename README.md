@@ -1,3 +1,8 @@
+1. no backend, so wanted to save file data in an object/array, to then populate paginated table. Googling brought article on passing basic inputs into a basic table. Adapted and refactored a bit. Added a form in.
+2. only had text. started with single file input passing to table component
+3. for progress bar, found components, but require
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
