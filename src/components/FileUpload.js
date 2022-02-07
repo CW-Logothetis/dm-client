@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import StandardDropzone from './Dropzone';
-
   
 function FileUpload(props) {
 
@@ -98,7 +96,6 @@ function FileUpload(props) {
         <input type="text" name="fileName" value={form.fileName} onChange={handleChange} multiple/>
         <button>Click Me</button>
         
-        <Dropzone />
 
       </form>
 
