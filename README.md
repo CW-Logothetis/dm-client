@@ -1,6 +1,12 @@
-1. no backend, so wanted to save file data in an object/array, to then populate paginated table. Googling brought article on passing basic inputs into a basic table. Adapted and refactored a bit. Added a form in.
-2. only had text. started with single file input passing to table component
-3. for progress bar, found components, but require
+CRUD mern example first. Couldn't get form to post - 400.
+
+1. no backend, so wanted to save file data in an object/array and use a json file with dummy data to populate a table. Googling brought article on passing basic inputs into a basic table. Adapted and refactored a bit. Added a form in.
+2. only had text inputs. Adapted for single file input passing to table component
+3. does multiple files upload work?
+4. Added tags with component
+5. added fuller table with pagination and search etc - dummy data from makeData.json
+6. test form upload with httpbin
+7. for progress bar, found components, but going with Axios example in TS
 
 
 # Getting Started with Create React App

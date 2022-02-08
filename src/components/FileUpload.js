@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// import AssigneeTags from './Assignee';
+import axios from 'axios';
 
 import TagsInput from 'react-tagsinput'
 import 'react-tagsinput/react-tagsinput.css'
@@ -11,6 +11,8 @@ function FileUpload(props) {
     {
       tags: [],
       fileName: "",
+      type: "",
+      uploadDate: "",
       file: null
     }
   )
@@ -26,16 +28,16 @@ function FileUpload(props) {
     )}
 
   // handle text input change for fileName
-  function handleChange (event) {
-    event.preventDefault()
-    const {name, value} = event.target
-            setForm(prevState => {
-                return {
-                    ...prevState,
-                    [name]: value,
-                }
-            })
-        }
+  // function handleChange (event) {
+  //   event.preventDefault()
+  //   const {name, value} = event.target
+  //           setForm(prevState => {
+  //               return {
+  //                   ...prevState,
+  //                   [name]: value,
+  //               }
+  //           })
+  //       }
 
     // handle adding a file
     function handleFileChange (event) {
@@ -52,32 +54,50 @@ function FileUpload(props) {
     event.preventDefault();
 
     const formData = new FormData();
+
     let arr = form.tags
-    
     arr.forEach((item) => formData.append("array[]", item))
     console.log(formData.getAll("array[]"))
 
     formData.append( "tags", form.tags );
     formData.append( "fileName", form.fileName );
     formData.append( "file", form.file );
+    formData.append( "type", form.type );
+
+    let datestr = Date().toString();
+    formData.append("uploadDate", datestr);
 
     //transfer props to DataTable
     props.transfer(form);
     console.log(form)
     clearState()
+
+    try {
+      // make axios post request
+      axios({
+        method: "post",
+        url: "https://httpbin.org/post",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch(error) {
+      console.log(error)
+    }
   }
   
   const clearState = () => {
     setForm({
       tags: [],
       fileName: "",
+      type: "",
+      uploadDate: "",
       file: null
     });
   };
 
   // fileData purely to see file name, date, type data is working
   const fileData = () => {
-    
+    let today = new Date().toLocaleDateString()
     if (form.file) {
        
       return (
@@ -85,10 +105,8 @@ function FileUpload(props) {
           <h2>File Details:</h2>
           <p>File Name: {form.file.name}</p>
           <p>File Type: {form.file.type}</p>
-          <p>
-            Last Modified:{" "}
-            {form.file.lastModifiedDate.toDateString()}
-          </p>
+          <p>Upload Date:{" "}{today}</p>
+
         </div>
       );
     } else {
@@ -112,14 +130,12 @@ function FileUpload(props) {
       
         <input name="file" type="file" onChange={handleFileChange} multiple/>
 
-        <label>File Name</label>
-        <input type="text" name="fileName" value={form.fileName} onChange={handleChange}/>
-
         <button>Click Me</button>
         
       </form>
 
       {fileData()}
+      
     </div>
   );
 }
