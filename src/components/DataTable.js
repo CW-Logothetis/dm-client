@@ -9,9 +9,10 @@ function DataTable() {
     return (
       <tr>
         <td key={file.id}>{file.id}</td>
-        <td key={file.tags}>{file.tags}</td>
         <td key={file.fileName}>{file.fileName}</td>
-        <td key={file.file.size}>{file.file.size}</td>
+        <td key={file.type}>{file.type}</td>
+        <td key={file.uploadDate}>{file.uploadDate}</td>
+        <td key={file.tags}>{file.tags}</td>
       </tr>
     );
   });
@@ -30,9 +31,10 @@ function DataTable() {
         <thead>
           <tr>
             <th>id</th>
-            <th>Assignee</th>
             <th>File Name</th>
-            <th>File Size</th>
+            <th>File Type</th>
+            <th>Upload Date</th>
+            <th>Assignee</th>
           </tr>
         </thead>
         <tbody>{tableRows}</tbody>
