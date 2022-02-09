@@ -1,6 +1,9 @@
 1. no backend, so wanted to save file data in an object/array, to then populate paginated table. Googling brought article on passing basic inputs into a basic table. Adapted and refactored a bit. Added a form in.
 2. only had text. started with single file input passing to table component
-3. for progress bar, found components, but require
+3. for progress bar, found components, but require Axios
+4. set-up MERN stack to enable post. with fetch. changed to axios. Issues with IP address when changed houses. then multipart and express-fileupload. mongoclient issue
+5. Axios - change fetch to axios. add material UI. fomr Ts article, so bit of adapting
+
 
 
 # Getting Started with Create React App
