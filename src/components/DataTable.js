@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import FileUpload from './FileUpload';
 import makeData from '../makeData.json';
 
+
+
 function DataTable() {
   const [fileData, setFileData] = useState(makeData);
   

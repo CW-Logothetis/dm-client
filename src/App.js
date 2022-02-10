@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
-import DataTable from './components/DataTable';
-import DocList from './components/NewTable';
-  
-class App extends Component {
-  render() {
-      return(
-          <div>
-            <DocList />,
-            <DataTable />
-          </div>
-      )
-    }
+import React from "react";
+import "./App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
-  }
-  
-export default App
+import FileUpload from "./components/FileUpload";
+
+import DocList from "./components/PageTable";
+
+function App() {
+  return (
+    <div className="container" style={{ width: "600px" }}>
+      <h4>Document Manager</h4>
+      <>
+        <FileUpload />,
+        <DocList />
+      </>
+      
+    </div>
+  );
+}
+
+export default App;

@@ -1,19 +1,20 @@
 import React from "react";
+import DataTable, { fileData } from "./DataTable";
 
 import { useTable, usePagination  } from 'react-table'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Table({ columns, data}) {
-    // Use the state and functions returned from useTable to build your UI
+import makeData from "../makeData";
+
+function Table({ columns, data }) {
+    // State and functions returned from useTable build the UI
     const {
       getTableProps,
       getTableBodyProps,
       headerGroups,
       prepareRow,
-      page, // Instead of using 'rows', we'll use page,
-      // which has only the rows for the active page
-  
-      // The rest of these things are super handy, too ;)
+      page,             // Normally 'rows'. 'Page' only has the rows
+                        // for the active page
       canPreviousPage,
       canNextPage,
       pageOptions,
@@ -23,7 +24,8 @@ function Table({ columns, data}) {
       previousPage,
       setPageSize,
       state: { pageIndex, pageSize },
-    } = useTable(  // useTable() from ‘react-table‘ distribute values from column and data objects to the table's properties
+    } = useTable(        // useTable() ‘react-table‘ hook to distribute values from 
+                        // <Table /> column and data objects to the table's properties
       {
         columns,
         data,
@@ -32,24 +34,9 @@ function Table({ columns, data}) {
       usePagination
     )
 
-    // render the Header and table body cells using map() on destructured properties
+    // render the Header and table body cells
     return (
         <>
-        <pre>
-          <code>
-            {JSON.stringify(
-              {
-                pageIndex,
-                pageSize,
-                pageCount,
-                canNextPage,
-                canPreviousPage,
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre>
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
@@ -74,8 +61,7 @@ function Table({ columns, data}) {
           </tbody>
         </table>
         {/* 
-          Pagination can be built however you'd like. 
-          This is just a very basic UI implementation:
+          Pagination
         */}
         <div className="pagination">
           <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
@@ -121,9 +107,59 @@ function Table({ columns, data}) {
             ))}
           </select>
         </div>
-        
       </>
     )
 }
 
-export default Table
+function DocList() {
+    const [data, setData] = React.useState(React.useMemo(() => makeData, [])); // dummy data from makeData.json
+   
+    const columns = React.useMemo(
+        () => [
+                {
+                    Header: 'File Name',
+                    accessor: 'fileName',
+                },
+                {
+                    Header: 'Upload Date',
+                    accessor: 'uploadDate',
+                },
+                {
+                    Header: 'Type',
+                    accessor: 'type',
+                },
+                {
+                    Header: 'Assignees',
+                    accessor: 'tags',
+                },
+            {
+            Header: "Delete",
+            id: "delete",
+            accessor: (str) => "delete",
+    
+            Cell: (tableProps) => (
+                <span
+                style={{
+                    cursor: "pointer",
+                    color: "red"
+                }}
+                onClick={() => {
+                    const dataCopy = [...data];
+                    dataCopy.splice(tableProps.row.index, 1);
+                    setData(dataCopy);
+                }}
+                >
+                x
+                </span>
+            )
+            }
+        ],
+        [data]
+        );
+
+        return (
+              <Table columns={columns} data={data} />
+          )
+    }
+
+export default DocList;
