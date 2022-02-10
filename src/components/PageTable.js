@@ -1,9 +1,7 @@
 import React from "react";
-import DataTable, { fileData } from "./DataTable";
 
 import { useTable, usePagination  } from 'react-table'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './table.css'
 import makeData from "../makeData";
 
 function Table({ columns, data }) {
@@ -158,7 +156,7 @@ function DocList() {
         );
 
         return (
-              <Table columns={columns} data={data} />
+              <Table className="doc-list" columns={columns} data={data} />
           )
     }
 

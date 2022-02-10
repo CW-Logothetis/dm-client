@@ -14,30 +14,28 @@ function DocList() {
     const columns = React.useMemo(
         () => [ 
                 
-                    {
-                        Header: 'ID',
-                        accessor: 'id',
-                    },
-                    {
-                        Header: 'File Name',
-                        accessor: 'fileName',
-                    },
-                    {
-                        Header: 'File Type',
-                        accessor: 'type',
-                    },
-                    {
-                        Header: 'Upload Date',
-                        accessor: 'uploadDate',
-                    },
-                    {
-                        Header: 'Assignee',
-                        accessor: 'tags',
-                    },
+                {
+                    Header: 'ID',
+                    accessor: 'id',
+                },
+                {
+                    Header: 'File Name',
+                    accessor: 'fileName',
+                },
+                {
+                    Header: 'File Type',
+                    accessor: 'type',
+                },
+                {
+                    Header: 'Upload Date',
+                    accessor: 'uploadDate',
+                },
+                {
+                    Header: 'Assignee',
+                    accessor: 'tags',
+                },
                   
                    
-                // ],
-            // },
             {
             Header: "Delete",
             id: "delete",

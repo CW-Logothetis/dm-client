@@ -3,16 +3,17 @@ import "./App.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 import FileUpload from "./components/FileUpload";
-
 import DocList from "./components/PageTable";
+import DataTable from "./components/DataTable";
 
 function App() {
   return (
     <div className="container" style={{ width: "600px" }}>
-      <h4>Document Manager</h4>
+      <h2>Document Manager</h2>
       <>
-        <FileUpload />,
-        <DocList />
+        {/* <FileUpload />, */}
+        <DocList />,
+        <DataTable />
       </>
       
     </div>
