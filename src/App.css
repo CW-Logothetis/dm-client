@@ -1,0 +1,158 @@
+html {
+  font-family: sans-serif;
+  color: #3f3e3e;
+}
+
+body {
+  margin-top: 3em;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.75rem;
+}
+
+p {
+  font-size: 0.75rem;
+}
+
+.buttons, .btn-form {
+  border-radius: 2px;
+  box-shadow: none;
+  border: 0;
+}
+
+.btn-form {
+  color: #fff;
+  padding: 12px 25px;
+  transition: 0;
+}
+
+.btn-form--upload {
+  background-color: #005180;
+  border: 2px solid #005180;
+  height: 3em;
+}
+
+.btn-form--upload:hover {
+  background-color: #fff;
+  border: 2px solid #005180;
+  color: #303030;
+  transition: 0;
+}
+
+input[type=file]::file-selector-button {
+  border-radius: 2px;
+  box-shadow: none;
+  border: 2px solid #fca12e;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: .2em;
+  background-color: #fca12e;
+  transition: 0;
+  height: 3em;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #fff;
+  border: 2px solid #fca12e;
+  color: #fca12e;
+}
+
+input[type=file] {
+  margin: 0;
+  padding: 0;
+}
+
+.react-tagsinput {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-left: 5px;
+  padding-top: 5px;
+  margin: 1em 0;
+}
+
+.react-tagsinput--focused {
+  border-color: #fca12e;
+}
+
+.react-tagsinput-tag {
+  background-color: #fca12e;
+  border-radius: 5px;
+  border: 1px solid #fca12e;
+  color: #fff;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.react-tagsinput-remove {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.react-tagsinput-tag a::before {
+  content: " ×";
+}
+
+.react-tagsinput-input {
+  background: transparent;
+  border: 0;
+  border-radius: 20px;
+  color: #777;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  margin-top: 1px;
+  outline: none;
+  padding: 5px;
+  width: 80px;
+}
+
+
+/* LAYOUT */
+
+.container {
+  margin: 0 auto;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: #fca12e 5px solid;
+  margin-bottom: 1em;
+}
+
+.btn-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5em 0 2em 0;
+}
+
+.tags-bar {
+  margin: 20px 0;
+}
+
+/* .file-data {
+  margin-right: 20%;
+} */
+
+.file-info {
+  margin-bottom: 2em;
+}
+
+.doc-list {
+  margin-top: 5em;
+}
