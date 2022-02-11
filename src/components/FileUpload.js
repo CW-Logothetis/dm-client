@@ -90,7 +90,7 @@ const FileUpload = (props) => {
     } else {
       return (
         <div className="file-info">
-          <h4>No file uploaded</h4>
+          <h4>Choose a file to upload</h4>
           <p>File Name: </p>
           <p>File Type: </p>
           <p>Upload Date:</p>
@@ -103,7 +103,9 @@ const FileUpload = (props) => {
     <div className="form-flex">
 
       <form onSubmit={transferFileData}>
-        <TagsInput name="tags" value={form.tags} onChange={handleTagChange} class="tags-bar"/>
+        <label for="tags"> Add assignee(s) and choose files for upload
+          <TagsInput name="tags" value={form.tags} onChange={handleTagChange} class="tags-bar"/>
+        </label>
         <div className="btn-flex">
           <input id="chooseFile" name="file" type="file" onChange={handleFileChange} multiple className="btn-form btn-form--choose"/>
           <button className="btn-form btn-form--upload">Upload File(s)</button>

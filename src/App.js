@@ -3,7 +3,6 @@ import "./App.css";
 
 import FileUpload from "./components/FileUpload";
 import DocList from "./components/PageTable";
-// import DataTable from "./components/DataTable";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
       <>
         <FileUpload />,
         <DocList />,
-        {/* <DataTable /> */}
+    
       </>
     </div>
   );

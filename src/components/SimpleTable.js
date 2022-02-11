@@ -29,6 +29,7 @@ function DataTable() {
   
   return (
     <div>
+      <FileUpload transfer={addRows} />
       <table>
         <thead>
           <tr>
@@ -41,7 +42,7 @@ function DataTable() {
         </thead>
         <tbody>{tableRows}</tbody>
       </table>
-      <FileUpload transfer={addRows} />
+      
     </div>
   );
 }
