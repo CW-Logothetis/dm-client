@@ -23,6 +23,8 @@ Build a small project called DocumentManager - a document catalog where the user
 
 ## FEATURES <a name="features"></a>
 
+The Document Manager is made up of two parts:
+
 a. DOCUMENT LIST
 - Users can see a list of uploaded documents (10 docs per page) with: Name; Type; Upload date; and Assignees.
 - The document list should also provide a delete action per document.
@@ -77,11 +79,14 @@ b. Set-up express/multer/cors. This worked and I was able to upload and download
 ## BUGS <a name="bugs"></a>
 
 - Paginated table does not update on form submit. Cannot find a way to pass updated form state to the table component.
+- The react-tags component has not been updated in line with newer React versions, which may or may not be causing issues when prop changes. It needs swapping for a new package and comparing.
 
 
 ## TO DO <a name="todo"></a>
 
-- at least change the makeData.json file to allow the form to add to the dummy data, which will update the table component.
+- add a component with progress bars. Best choice might be a dropzone component with progress bar built-in
+- delete old branches
+- add tests
 
 
 

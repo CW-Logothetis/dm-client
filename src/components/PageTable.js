@@ -1,5 +1,4 @@
 import React from "react";
-import PageTable from './PageTable'
 
 import { useTable, usePagination  } from 'react-table'
 import './table.css'
