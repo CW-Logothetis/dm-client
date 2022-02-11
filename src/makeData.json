@@ -1,173 +1,172 @@
 
-
 [ 
     {
     "id":1,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"John"
     },
     {
     "id":2,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Paul"
     }, 
     {
     "id":3,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"George"
     },
     
     {
     "id":4,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Ringo"
     }, 
     {
     "id":5,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Billy"
     },
     {
     "id":6,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Shears"
     }, 
     {
     "id":7,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Rita"
     },
     
     {
     "id":8,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Penny"
     },
     {
     "id": 9,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Bill"
     },
     {
     "id": 10,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Sadie"
     },
     {
     "id": 11,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Julia"
     },
     {
     "id": 12,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Michelle"
     },
     {
     "id": 13,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Bob"
     },
     {
     "id": 14,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     },
     {
     "id": 15,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Bob"
     },
     {
     "id": 16,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     },
     {
     "id": 17,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Bob"
     },
     {
     "id": 18,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     },
     {
     "id": 19,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     },
     {
     "id": 20,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     },
     {
     "id": 21,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Bob"
     },
     {
     "id": 22,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     },
     {
     "id": 23,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "pdf",
     "uploadDate":"07/02/2022",
-    "tags":"Chris"
+    "tags":"Bob"
     },
     {
     "id": 24,
     "fileName": "accounts20.pdf",
-    "type": "application/pdf",
+    "type": "HTML",
     "uploadDate":"07/02/2022",
     "tags":"Chris"
     }

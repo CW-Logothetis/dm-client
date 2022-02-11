@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color: #f8bc73;}
+
+ 
+
+
+.pagination {
+    margin: 1em auto  ;
+  }
+  
+  
