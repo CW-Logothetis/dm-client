@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import FileUpload from './FileUpload';
 import makeData from '../makeData.json';
 
+
+
 function DataTable() {
   const [fileData, setFileData] = useState(makeData);
   
@@ -11,7 +13,7 @@ function DataTable() {
         <td key={file.id}>{file.id}</td>
         <td key={file.fileName}>{file.fileName}</td>
         <td key={file.type}>{file.type}</td>
-        <td key={file.uploadDate}>{file.uploadDate}</td>
+        {/* <td key={file.uploadDate}>{file.uploadDate}</td> */}
         <td key={file.tags}>{file.tags}</td>
       </tr>
     );
@@ -45,4 +47,3 @@ function DataTable() {
 }
 
 export default DataTable
-
