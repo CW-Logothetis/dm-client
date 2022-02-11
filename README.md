@@ -38,12 +38,12 @@ b. FILE UPLOAD
 ### Missing Features
 - Paginated table (Document List) uses dummy data (not connected to server - see Log below). On form submit the table does not update.
 - Progress bar on upload (for multiple documents, attempt upload progress per document)
-- Bad UX experience - missing messages to notify of upload success or errors
+- Bad UX experience - missing messages to notify of upload success or errors - can only be seen in console.
 
 
 ## DEPLOY LINK
 
-INSERT Netlify link:
+Netlify link: https://doc-mgr.netlify.app/
 
 
 ## DEPENDENCIES <a name="dependencies"></a>
@@ -84,10 +84,10 @@ b. Set-up express/multer/cors. This worked and I was able to upload and download
 
 ## TO DO <a name="todo"></a>
 
+- Improve UI/UX and add accesibility labels
 - add a component with progress bars. Best choice might be a dropzone component with progress bar built-in
 - delete old branches
 - add tests
-
 
 
 ## RUNNING THE PROJECT <a name="runproject"></a>
