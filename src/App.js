@@ -10,7 +10,7 @@ function App() {
       <h2>Document Manager</h2>
       <>
         <FileUpload />,
-        <DocList />,
+        {/* <DocList />, */}
     
       </>
     </div>
