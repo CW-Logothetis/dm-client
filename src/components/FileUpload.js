@@ -130,7 +130,7 @@ function FileUpload(props) {
       
         <input name="file" type="file" onChange={handleFileChange} multiple/>
 
-        <button>Click Me</button>
+        <button disabled={!form.file} >Click Me</button>
         
       </form>
 
