@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import TagsInput from 'react-tagsinput';
 
-// import 'react-tagsinput/react-tagsinput.css';
-
 // set initial state for all form items
 const FileUpload = (props) => {
  const [form, setForm] = useState(

@@ -1,10 +1,6 @@
 import React from "react";
-// import DataTable, { fileData } from "./DataTable";
-
 import { useTable, usePagination  } from 'react-table'
 import './table.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 import makeData from "../makeData";
 
 function Table({ columns, data }) {

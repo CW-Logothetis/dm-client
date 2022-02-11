@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 import FileUpload from "./components/FileUpload";
 import DocList from "./components/PageTable";
-import DataTable from "./components/DataTable";
+// import DataTable from "./components/DataTable";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <DocList />,
         {/* <DataTable /> */}
       </>
-      
     </div>
   );
 }
