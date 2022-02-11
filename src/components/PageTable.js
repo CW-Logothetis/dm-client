@@ -1,4 +1,6 @@
 import React from "react";
+import PageTable from './PageTable'
+
 import { useTable, usePagination  } from 'react-table'
 import './table.css'
 import makeData from "../makeData";
@@ -155,8 +157,10 @@ function DocList() {
         );
 
         return (
-              <Table columns={columns} data={data} />
+
+              <Table className="doc-list" columns={columns} data={data} />
           )
     }
 
 export default DocList;
+
