@@ -49,6 +49,14 @@ p {
   transition: 0;
 }
 
+button:disabled,
+button:disabled:hover,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 input[type=file]::file-selector-button {
   border-radius: 2px;
   box-shadow: none;
@@ -129,6 +137,7 @@ input[type=file] {
 
 .container {
   margin: 0 auto;
+  max-width: 80%;
 }
 
 .form-flex {

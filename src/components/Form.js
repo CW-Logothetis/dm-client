@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import TagsInput from 'react-tagsinput';
 
-import { useTable, usePagination  } from 'react-table'
+// import { useTable, usePagination  } from 'react-table'
 import './table.css'
-import makeData from "../makeData";
+// import makeData from "../makeData";
+
+
 
 // set initial state for all form items
-const FileUpload = () => {
+const FileUpload = (props) => {
+
+    const today = new Date();
+    const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateTime = date+' '+time;
+
  const [form, setForm] = useState(
     {
-      fileName: "",
-      type: "",
-      uploadDate: "",
+    //   fileName: "",
+    //   type: "",
+    //   uploadDate: dateTime,
       tags: [],
       file: null
     }
@@ -35,7 +43,8 @@ const FileUpload = () => {
       setForm((prevState) => ({
             ...prevState,
             // not really needed here, but there in case any text fields or checkboxes are added later
-            [name]: type === 'file' ? files[0] : null
+            [name]: type === 'file' ? files[0] : null,
+            dateTime
       }));
     };
 
@@ -49,32 +58,28 @@ const FileUpload = () => {
 
     let arr = form.tags
     arr.forEach((item) => formData.append("array[]", item))
-    formData.append( "tags", form.tags );
+    // formData.append( "tags", form.tags );
     
     formData.append( "file", form.file );
-    formData.append( "fileName", form.fileName );
+    formData.append( "fileName", form.name );
     formData.append( "type", form.type );
-
-    const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    const dateTime = date+' '+time;
     formData.append("uploadDate", dateTime);
 
-    // props.transfer(form);
+    props.transfer(form);
 
     // setFileInfo(form)
-
-    clearState()
+    console.log(formData.get('uploadDate'))
     console.log(form)
+    clearState()
+   
   }
  
   
   const clearState = () => {
     setForm({
       tags: [],
-      fileName: "",
-      type: "",
+    //   fileName: "",
+    //   type: "",
       uploadDate: "",
       file: null
     });
@@ -82,15 +87,15 @@ const FileUpload = () => {
 
   // fileData purely to see file name, date, type data is working
   const fileData = () => {
-    let today = new Date().toLocaleDateString()
+    // let today = new Date().toLocaleDateString()
     if (form.file) {
        
       return (
         <div className="file-info">
-          <h2>File Details:</h2>
+          <h4>File Details:</h4>
           <p>File Name: {form.file.name}</p>
-          <p>File Type: {form.file.type}</p>
-          <p>Upload Date:{" "}{today}</p>
+          {/* <p>File Type: {form.file.type}</p>
+          <p>Upload Date:{" "}{today}</p> */}
 
         </div>
       );
@@ -98,9 +103,8 @@ const FileUpload = () => {
       return (
         <div className="file-info">
           <h4>Choose a file to upload</h4>
-          <p>File Name: </p>
-          <p>File Type: </p>
-          <p>Upload Date:</p>
+          <p>File Name: no file selected</p>
+
         </div>
       );
     }
@@ -108,184 +112,185 @@ const FileUpload = () => {
   
   return (
     <div className="form-flex">
-
+        <h3>Upload a new document</h3>
       <form onSubmit={transferFileData}>
-        <label for="tags"> Add assignee(s) and choose files for upload
+        <label> Add assignee(s) and choose files for upload </label>
           <TagsInput name="tags" value={form.tags} onChange={handleTagChange} class="tags-bar"/>
-        </label>
+       
         <div className="btn-flex">
           <input id="chooseFile" name="file" type="file" onChange={handleFileChange} multiple className="btn-form btn-form--choose"/>
-          <button className="btn-form btn-form--upload">Upload File(s)</button>
+          <button disabled={!form.file} className="btn-form btn-form--upload">Upload File(s)</button>
         </div>
       
       </form>
          {fileData()}
-         <DocList />
+         {/* <DocList /> */}
     </div>
     
   ); 
 }
 
-export default FileUpload;
 
 
 
 
-function Table({ columns, data }) {
-    // State and functions returned from useTable build the UI
-    const {
-      getTableProps,
-      getTableBodyProps,
-      headerGroups,
-      prepareRow,
-      page,             // Normally 'rows'. 'Page' only has the rows
-                        // for the active page
-      canPreviousPage,
-      canNextPage,
-      pageOptions,
-      pageCount,
-      gotoPage,
-      nextPage,
-      previousPage,
-      setPageSize,
-      state: { pageIndex, pageSize },
-    } = useTable(        // useTable() ‘react-table‘ hook to distribute values from 
-                        // <Table /> column and data objects to the table's properties
-      {
-        columns,
-        data,
-        initialState: { pageIndex: 0 },
-      },
-      usePagination
-    )
 
-    // render the Header and table body cells
-    return (
-        <>
-        <table {...getTableProps()}>
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map((row, i) => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => {
-                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-        {/* 
-          Pagination
-        */}
-        <div className="pagination">
-          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-            {'<<'}
-          </button>{' '}
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            {'<'}
-          </button>{' '}
-          <button onClick={() => nextPage()} disabled={!canNextPage}>
-            {'>'}
-          </button>{' '}
-          <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-            {'>>'}
-          </button>{' '}
-          <span>
-            Page{' '}
-            <strong>
-              {pageIndex + 1} of {pageOptions.length}
-            </strong>{' '}
-          </span>
-          <span>
-            | Go to page:{' '}
-            <input
-              type="number"
-              defaultValue={pageIndex + 1}
-              onChange={e => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0
-                gotoPage(page)
-              }}
-              style={{ width: '100px' }}
-            />
-          </span>{' '}
-          <select
-            value={pageSize}
-            onChange={e => {
-              setPageSize(Number(e.target.value))
-            }}
-          >
-            {[10, 20, 30, 40, 50].map(pageSize => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
-      </>
-    )
-}
+// function Table({ columns, data }) {
+//     // State and functions returned from useTable build the UI
+//     const {
+//       getTableProps,
+//       getTableBodyProps,
+//       headerGroups,
+//       prepareRow,
+//       page,             // Normally 'rows'. 'Page' only has the rows
+//                         // for the active page
+//       canPreviousPage,
+//       canNextPage,
+//       pageOptions,
+//       pageCount,
+//       gotoPage,
+//       nextPage,
+//       previousPage,
+//       setPageSize,
+//       state: { pageIndex, pageSize },
+//     } = useTable(        // useTable() ‘react-table‘ hook to distribute values from 
+//                         // <Table /> column and data objects to the table's properties
+//       {
+//         columns,
+//         data,
+//         initialState: { pageIndex: 0 },
+//       },
+//       usePagination
+//     )
 
-function DocList(form) {
-    const [data, setData] = React.useState(React.useMemo(() => {form}, [])); // dummy data from makeData.json
+//     // render the Header and table body cells
+//     return (
+//         <>
+//         <table {...getTableProps()}>
+//           <thead>
+//             {headerGroups.map(headerGroup => (
+//               <tr {...headerGroup.getHeaderGroupProps()}>
+//                 {headerGroup.headers.map(column => (
+//                   <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+//                 ))}
+//               </tr>
+//             ))}
+//           </thead>
+//           <tbody {...getTableBodyProps()}>
+//             {page.map((row, i) => {
+//               prepareRow(row)
+//               return (
+//                 <tr {...row.getRowProps()}>
+//                   {row.cells.map(cell => {
+//                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+//                   })}
+//                 </tr>
+//               )
+//             })}
+//           </tbody>
+//         </table>
+//         {/* 
+//           Pagination
+//         */}
+//         <div className="pagination">
+//           <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+//             {'<<'}
+//           </button>{' '}
+//           <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+//             {'<'}
+//           </button>{' '}
+//           <button onClick={() => nextPage()} disabled={!canNextPage}>
+//             {'>'}
+//           </button>{' '}
+//           <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+//             {'>>'}
+//           </button>{' '}
+//           <span>
+//             Page{' '}
+//             <strong>
+//               {pageIndex + 1} of {pageOptions.length}
+//             </strong>{' '}
+//           </span>
+//           <span>
+//             | Go to page:{' '}
+//             <input
+//               type="number"
+//               defaultValue={pageIndex + 1}
+//               onChange={e => {
+//                 const page = e.target.value ? Number(e.target.value) - 1 : 0
+//                 gotoPage(page)
+//               }}
+//               style={{ width: '100px' }}
+//             />
+//           </span>{' '}
+//           <select
+//             value={pageSize}
+//             onChange={e => {
+//               setPageSize(Number(e.target.value))
+//             }}
+//           >
+//             {[10, 20, 30, 40, 50].map(pageSize => (
+//               <option key={pageSize} value={pageSize}>
+//                 Show {pageSize}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//       </>
+//     )
+// }
+
+// function DocList(form) {
+//     const [data, setData] = React.useState(React.useMemo(() => form, [])); // dummy data from makeData.json
    
-    const columns = React.useMemo(
-        () => [
-                {
-                    Header: 'File Name',
-                    accessor: 'fileName',
-                },
-                {
-                    Header: 'Upload Date',
-                    accessor: 'uploadDate',
-                },
-                {
-                    Header: 'Type',
-                    accessor: 'type',
-                },
-                {
-                    Header: 'Assignees',
-                    accessor: 'tags',
-                },
-            {
-            Header: "Delete",
-            id: "delete",
-            accessor: (str) => "delete",
+//     const columns = React.useMemo(
+//         () => [
+//                 {
+//                     Header: 'File Name',
+//                     accessor: 'fileName',
+//                 },
+//                 {
+//                     Header: 'Upload Date',
+//                     accessor: 'uploadDate',
+//                 },
+//                 {
+//                     Header: 'Type',
+//                     accessor: 'type',
+//                 },
+//                 {
+//                     Header: 'Assignees',
+//                     accessor: 'tags',
+//                 },
+//             {
+//             Header: "Delete",
+//             id: "delete",
+//             accessor: (str) => "delete",
     
-            Cell: (tableProps) => (
-                <span
-                style={{
-                    cursor: "pointer",
-                    color: "red"
-                }}
-                onClick={() => {
-                    const dataCopy = [...data];
-                    dataCopy.splice(tableProps.row.index, 1);
-                    setData(dataCopy);
-                }}
-                >
-                x
-                </span>
-            )
-            }
-        ],
-        [data]
-        );
+//             Cell: (tableProps) => (
+//                 <span
+//                 style={{
+//                     cursor: "pointer",
+//                     color: "red"
+//                 }}
+//                 onClick={() => {
+//                     const dataCopy = [...data];
+//                     dataCopy.splice(tableProps.row.index, 1);
+//                     setData(dataCopy);
+//                 }}
+//                 >
+//                 x
+//                 </span>
+//             )
+//             }
+//         ],
+//         [data]
+//         );
 
-        return (
+//         return (
 
-              <Table className="doc-list" columns={columns} data={data} />
-          )
-    }
+//               <Table className="doc-list" columns={columns} data={data} />
+//           )
+//     }
 
 
+    export default FileUpload;

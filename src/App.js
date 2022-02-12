@@ -1,17 +1,18 @@
 import React from "react";
 import "./App.css";
 
-import FileUpload from "./components/FileUpload";
-import DocList from "./components/PageTable";
+// import FileUpload from "./components/Form";
+import DataTable from "./components/SimpleTable";
+// import DocList from "./components/PageTable";
 
 function App() {
   return (
-    <div className="container" style={{ width: "600px" }}>
+    <div className="container">
       <h2>Document Manager</h2>
       <>
-        <FileUpload />,
+        {/* <FileUpload />, */}
         {/* <DocList />, */}
-    
+        <DataTable/>
       </>
     </div>
   );

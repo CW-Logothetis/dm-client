@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import FileUpload from './FileUpload';
-import makeData from '../makeData.json';
+import FileUpload from './Form';
+// import makeData from '../makeData.json';
 
 function DataTable() {
-  const [fileData, setFileData] = useState(makeData);
+  const [fileData, setFileData] = useState([]);
   
   const tableRows = fileData.map((file) => {
     return (
       <tr>
         <td key={file.id}>{file.id}</td>
-        <td key={file.fileName}>{file.fileName}</td>
-        <td key={file.type}>{file.type}</td>
-        {/* <td key={file.uploadDate}>{file.uploadDate}</td> */}
+        <td key={file.file.name}>{file.file.name}</td>
+        <td key={file.file.type}>{file.file.type}</td>
+        <td key={file.dateTime}>{file.dateTime}</td>
         <td key={file.tags}>{file.tags}</td>
       </tr>
     );
@@ -27,11 +27,13 @@ function DataTable() {
   
   return (
     <div>
+      
       <FileUpload transfer={addRows} />
+      <h3>Document List</h3>
       <table>
         <thead>
           <tr>
-            <th>id</th>
+            <th>#</th>
             <th>File Name</th>
             <th>File Type</th>
             <th>Upload Date</th>
