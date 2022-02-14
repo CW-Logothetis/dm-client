@@ -43,7 +43,9 @@ b. FILE UPLOAD
 
 ## DEPLOY LINK
 
-Netlify link: https://doc-mgr.netlify.app/
+Paginated table (main branch): https://doc-mgr.netlify.app/
+
+Simple table (simple-table branch): https://simple-form-table.netlify.app/
 
 
 ## DEPENDENCIES <a name="dependencies"></a>
@@ -66,7 +68,11 @@ Assignee Tags
 4. Added tags from react-tagsinput, to replace the simple text input.
 5. Added a table component (react-table) to allow for pagination, search and filter. 
 
-Here was my first big problem: the table initialises with the dummy data from makeData.json, but on submission of a new form I cannot find a way to pass state into this component. With the original, simple table it was straightforward; it passed with props from the form into the table rows. The paginated table component is more complicated and it has defeated me. I attempted to update the makeData.json with the updated form state, but could not. I realised the night before submission that it needs converting to a .js file from .json. But I ran out of time.
+Here was my first big problem: the table initialises with the dummy data from makeData.json, but on submission of a new form I cannot find a way to pass state/props into the react-table component. 
+
+With the original, simple table it was straightforward; it passed props from the form into the table rows. The simple table is on its own branch and I deployed it here: https://simple-form-table.netlify.app/
+
+The paginated table component is more complicated and it has defeated me. I attempted to update the makeData.json with the updated form state, but could not. I realised the night before submission that it needs converting to a .js file from .json. But I ran out of time.
 Therefore, in the deployed app the paginated table does not update.
 
 6. Progress bar onload - Axios has built in functionality for this. Here, I went down a rabbit hole. I should have added Axios and tried testing it with a simple connection to a free image/file host. However, I decided that I wanted to connect a back-end, which would enable me to send updated data to the paginated table too. I was not successful, but learnt a lot trying the following:
@@ -78,7 +84,7 @@ b. Set-up express/multer/cors. This worked and I was able to upload and download
 
 ## BUGS <a name="bugs"></a>
 
-- Paginated table does not update on form submit. Cannot find a way to pass updated form state to the table component.
+- Paginated table does not update on form submit. I cannot find a way to pass updated form state to the table component.
 - The react-tags component has not been updated in line with newer React versions, which may or may not be causing issues when prop changes. It needs swapping for a new package and comparing.
 
 
