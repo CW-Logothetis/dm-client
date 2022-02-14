@@ -7,12 +7,12 @@ function DataTable() {
   
   const tableRows = fileData.map((file) => {
     return (
-      <tr>
-        <td key={file.id}>{file.id}</td>
-        <td key={file.file.name}>{file.file.name}</td>
-        <td key={file.file.type}>{file.file.type}</td>
-        <td key={file.dateTime}>{file.dateTime}</td>
-        <td key={file.tags}>{file.tags}</td>
+      <tr key={file.id}>
+        <td >{file.id}</td>
+        <td >{file.file.name}</td>
+        <td >{file.file.type.slice(-4)}</td>
+        <td >{file.dateTime}</td>
+        <td >{file.tags}</td>
       </tr>
     );
   });

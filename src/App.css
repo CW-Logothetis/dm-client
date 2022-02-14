@@ -137,7 +137,8 @@ input[type=file] {
 
 .container {
   margin: 0 auto;
-  max-width: 80%;
+  width: 80%;
+  max-width: 900px;
 }
 
 .form-flex {
